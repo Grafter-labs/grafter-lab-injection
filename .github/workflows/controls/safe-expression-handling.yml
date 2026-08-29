@@ -1,0 +1,16 @@
+name: control-safe-expression-handling
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+jobs:
+  pass-through-environment:
+    runs-on: ubuntu-latest
+    env:
+      UNTRUSTED_TITLE: ${{ github.event.issue.title }}
+    steps:
+      - run: printf '%s\n' "GRAFTER_MARKER title-stored-as-data" > marker.txt

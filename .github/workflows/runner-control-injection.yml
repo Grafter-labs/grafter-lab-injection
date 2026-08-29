@@ -1,0 +1,15 @@
+name: runner-control-injection
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+
+jobs:
+  input-selected-runner:
+    if: ${{ false }}
+    runs-on: ${{ github.event.issue.title }}
+    steps:
+      - run: echo "GRAFTER_MARKER runner-control-injection"

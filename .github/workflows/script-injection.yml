@@ -1,0 +1,16 @@
+name: script-injection
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+jobs:
+  interpolate-event-text:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Detector fixture - direct expression in shell
+        run: echo "GRAFTER_MARKER title=${{ github.event.issue.title }}"

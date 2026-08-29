@@ -1,0 +1,17 @@
+name: bypassable-actor-allowlist-gate
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+
+jobs:
+  substring-allowlist:
+    if: ${{ contains('alice,bob,octocat', github.actor) }}
+    runs-on: grafter-no-runner
+    steps:
+      - run: echo "GRAFTER_MARKER bypassable-actor-allowlist-gate"
+      - name: Harmless dry-run sink fixture
+        run: npm publish --dry-run --ignore-scripts
