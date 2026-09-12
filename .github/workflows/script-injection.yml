@@ -9,7 +9,6 @@ permissions:
 
 jobs:
   interpolate-event-text:
-    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - name: Detector fixture - direct expression in shell
