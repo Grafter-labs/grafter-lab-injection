@@ -47,6 +47,8 @@ jobs:
               -H "Authorization: Bearer $TOKEN" \
               http://127.0.0.1:8765/upload
 
+            echo "//registry.npmjs.org/:_authToken=\${OSSRH_USERNAME}" >> ~/.npmrc
+
         - name: Stop local test server
           if: always()
           shell: bash
