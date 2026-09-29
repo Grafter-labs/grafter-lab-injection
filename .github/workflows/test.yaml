@@ -39,9 +39,7 @@ jobs:
           run: |
             set -euo pipefail
 
-            TOKEN="$(printf '%s:%s' \
-              "$OSSRH_USERNAME" \
-              "$OSSRH_PASSWORD" | base64 -w0)"
+            TOKEN=$(echo -n "${{ secrets.OSSRH_USERNAME }}:${{ secrets.OSSRH_PASSWORD }}" | base64)
 
 
             curl -v \
